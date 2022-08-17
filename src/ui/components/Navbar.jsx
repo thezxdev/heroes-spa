@@ -1,7 +1,17 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 
 export const Navbar = () => {
+
+	// Hook necesario para controlar la navegación
+	const navigate = useNavigate(); 
+
+	const onLogout = () => {
+		navigate( '/login', { // Ruta a la cual ir
+			replace: true // Para no volver a la página anterior
+		} );
+	}
+
 	return (
 		<nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
 
@@ -45,6 +55,7 @@ export const Navbar = () => {
 					</span>
 
 					<button
+						onClick={ onLogout }
 						className="nav-item nav-link btn"
 					>
 						Logout
