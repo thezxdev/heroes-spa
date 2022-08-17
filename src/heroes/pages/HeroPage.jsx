@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getHeroById } from '../helpers';
 
@@ -8,7 +9,9 @@ export const HeroPage = () => {
 
   const navigate = useNavigate();
 
-  const hero = getHeroById( id );
+  const hero = useMemo( () => {
+    return getHeroById( id );
+  }, [ id ]);
   
   const onNavigateBack = () => {
     navigate( -1 ); // Regresar a la pantalla anterior / Puede salir de la aplicación si la pantalla anterior es una diferente de esta.
