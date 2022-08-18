@@ -36,8 +36,23 @@ export const AuthProvider = ({ children }) => {
     dispatch( action );
   }
 
+  const logout = () => {
+    localStorage.removeItem('user'); // Remover el usuario del localstorage
+    
+    const action = {
+      type: types.logout // Llamar a la acción del reducer
+    }
+    
+    dispatch( action ); // Enviar la acción al reducer
+  }
+
   return (
-    <AuthContext.Provider value={{ ...authState, login }}>
+    <AuthContext.Provider value={{
+      ...authState,
+      
+      // Methods
+      login,
+      logout }}>
       { children }
     </AuthContext.Provider>
   )

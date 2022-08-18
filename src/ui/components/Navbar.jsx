@@ -5,12 +5,16 @@ import { AuthContext } from '../../auth';
 
 export const Navbar = () => {
 
-	const { user } = useContext( AuthContext );
+	const { user, logout } = useContext( AuthContext );
 
 	// Hook necesario para controlar la navegación
 	const navigate = useNavigate(); 
 
 	const onLogout = () => {
+
+		// Mandar a llamar a la función logout del context
+		logout();
+
 		navigate( '/login', { // Ruta a la cual ir
 			replace: true // Para no volver a la página anterior
 		} );
