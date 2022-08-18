@@ -9,9 +9,12 @@ export const LoginPage = () => {
 
   const onLogin = () => {
     
+    // Recuperar última ruta
+    const lastPath = localStorage.getItem('lastPath') || '/';
+
     login('zxzx');
     
-    navigate('/', {
+    navigate( lastPath , {
       replace: true
     });
   }
