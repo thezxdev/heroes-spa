@@ -7,7 +7,7 @@ export const authReducer = ( state = {}, action ) => {
       return {
         ...state, // En caso de pasar más propiedades
         logged: true,
-        name: action.payload
+        user: action.payload
       };
 
     case types.login:
